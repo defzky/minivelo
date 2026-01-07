@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-neon: #ccff00;
+  --color-charcoal: #1a1a1a;
+}
+
+body {
+  @apply bg-charcoal text-white font-sans overflow-x-hidden;
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #00fff9;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(13px, 9999px, 86px, 0);
+    transform: skew(0.55deg);
+  }
+
+  5% {
+    clip: rect(57px, 9999px, 20px, 0);
+    transform: skew(0.06deg);
+  }
+
+  10% {
+    clip: rect(32px, 9999px, 90px, 0);
+    transform: skew(0.96deg);
+  }
+
+  /* ... simplified for brevity, will add more complex frames if needed */
+  100% {
+    clip: rect(67px, 9999px, 6px, 0);
+    transform: skew(0.32deg);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(65px, 9999px, 100px, 0);
+    transform: skew(0.4deg);
+  }
+
+  100% {
+    clip: rect(3px, 9999px, 17px, 0);
+    transform: skew(0.9deg);
+  }
+}
